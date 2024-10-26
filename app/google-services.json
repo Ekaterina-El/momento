@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "573132922997",
+    "project_id": "momento-4c3d6",
+    "storage_bucket": "momento-4c3d6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573132922997:android:6f33c680fcc911b2fbd83c",
+        "android_client_info": {
+          "package_name": "ru.elkael.momento"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFKSYp-WSa5L-c9i81mqdeuWjCRjieWVk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

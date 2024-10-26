@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Momento"
 include(":app")
- 
+include(":ui")
+include(":resources")
+include(":utils")
