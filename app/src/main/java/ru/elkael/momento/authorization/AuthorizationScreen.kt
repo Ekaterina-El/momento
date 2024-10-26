@@ -89,7 +89,7 @@ fun AuthorizationScreen() {
                     .padding(horizontal = 50.dp)
             )
 
-            Spacer(modifier = Modifier.height(70.dp))
+            Spacer(modifier = Modifier.height(25.dp))
 
             Row(modifier = Modifier.fillMaxWidth()) {
                 AppButton(
