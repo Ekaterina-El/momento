@@ -33,6 +33,13 @@ val TextFieldErrorTextStyle by lazy {
     )
 }
 
+val ButtonMediumTextStyle by lazy {
+    TextStyle(
+        fontFamily = fontFamily,
+        fontSize = 14.sp,
+    )
+}
+
 val ButtonTextStyle by lazy {
     TextStyle(
         fontFamily = fontFamily,
