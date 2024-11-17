@@ -21,7 +21,7 @@ class AuthorizationViewModel @Inject constructor(
     private var currentAuthPart: AuthPart = AuthPart.CREATE_ACCOUNT
 
     init {
-        // TODO: check auth
+        if (isAuthedUseCase()) setState(AuthorizationState.Authorized)
     }
 
     fun selectSignUp() {
