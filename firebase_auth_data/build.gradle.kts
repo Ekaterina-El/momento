@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -48,6 +49,10 @@ dependencies {
     implementation(libs.google.firebase.firestore) {
         exclude("com.google.protobuf", "protobuf-java")
     }
+
+    // Dagger 2
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 
     // Modules
     implementation(project(":auth_domain"))

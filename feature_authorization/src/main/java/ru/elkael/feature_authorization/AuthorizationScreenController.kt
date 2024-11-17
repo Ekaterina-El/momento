@@ -13,6 +13,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.viewmodel.viewModelFactory
 import ru.elkael.ui.loaders.Loader
 import ru.elkael.ui.dialogs.ExceptionDialog
 import ru.elkael.resources.R
@@ -23,10 +26,8 @@ import ru.elkael.ui.theme.APP_VERTICAL_PADDING
 import ru.elkael.ui.theme.AccentColor
 
 @Composable
-fun AuthorizationScreenController(
-    viewModel: AuthorizationViewModel,
-    onNavigate: (Screen) -> Unit
-) {
+fun AuthorizationScreenController(viewModelFactory: ViewModelProvider.Factory, onNavigate: (Screen) -> Unit) {
+    val viewModel: AuthorizationViewModel = viewModel(factory = viewModelFactory)
     val state = viewModel.viewState.collectAsState(AuthorizationState.Initial)
 
     Scaffold { paddingValues ->

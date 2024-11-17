@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
 import ru.elkael.feature_authorization.AuthorizationScreenController
-import ru.elkael.feature_authorization.AuthorizationViewModel
+import ru.elkael.momento.di.getApplicationComponent
 import ru.elkael.ui.navigations.Screen
 import ru.elkael.ui.theme.MomentoTheme
 
@@ -18,25 +18,20 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val viewModelFactory = getApplicationComponent().getViewModelFactory()
+
             MomentoTheme {
-                val mainViewModel: MainViewModel = viewModel()
+                val mainViewModel: MainViewModel = viewModel(factory = viewModelFactory)
 
                 val state = mainViewModel.viewState.collectAsState()
                 when (state.value) {
-                    MainViewModelState.Initial -> {
-                        mainViewModel.onNavigateTo(Screen.Authorization)
-                    }
-
+                    MainViewModelState.Initial -> mainViewModel.onNavigateTo(Screen.Authorization)
+                    MainViewModelState.Home -> HomeScreenController()
                     MainViewModelState.Authorization -> {
-                        val authViewModel: AuthorizationViewModel = viewModel()
                         AuthorizationScreenController(
-                            viewModel = authViewModel,
+                            viewModelFactory = viewModelFactory,
                             onNavigate = mainViewModel::onNavigateTo
                         )
-                    }
-
-                    MainViewModelState.Home -> {
-                        HomeScreenController()
                     }
                 }
             }

@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    id("kotlin-kapt")
 }
 
 android {
@@ -49,9 +50,12 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.tools.core)
 
+    // Dagger 2
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
+
     // Modules
     implementation(project(":ui"))
-    implementation(project(":firebase_auth_data"))
     implementation(project(":auth_domain"))
     implementation(project(":utils"))
     implementation(project(":resources"))

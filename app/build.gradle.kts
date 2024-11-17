@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.google.gms.google.services)
+    id("kotlin-kapt")
 }
 
 android {
@@ -59,11 +60,29 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.tools.core)
 
+    // Dagger 2
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
+
+    // Firebase
+    implementation(platform(libs.firebase.bom)) {
+        exclude("com.google.protobuf", "protobuf-java")
+
+    }
+    implementation(libs.firebase.auth) {
+        exclude("com.google.protobuf", "protobuf-java")
+    }
+    implementation(libs.google.firebase.firestore) {
+        exclude("com.google.protobuf", "protobuf-java")
+    }
+
     // Modules
     implementation(project(":ui"))
     implementation(project(":resources"))
     implementation(project(":utils"))
+    implementation(project(":auth_domain"))
     implementation(project(":feature_authorization"))
+    implementation(project(":firebase_auth_data"))
 
     // Testing
     testImplementation(libs.junit)

@@ -3,20 +3,16 @@ package ru.elkael.feature_authorization
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import ru.elkael.auth_domain.AuthRepository
 import ru.elkael.auth_domain.AuthStatus
 import ru.elkael.auth_domain.useCase.CreateAccountUseCase
 import ru.elkael.auth_domain.useCase.IsAuthedUseCase
-import ru.elkael.auth_domain.useCase.LogoutUseCase
-import ru.elkael.firebase_auth_data.FirebaseAuthRepository
 import ru.elkael.ui.BaseViewModel
+import javax.inject.Inject
 
-class AuthorizationViewModel: BaseViewModel<AuthorizationState>() {
-    private val authRepository: AuthRepository = FirebaseAuthRepository()
-    private val createAccountUseCase: CreateAccountUseCase = CreateAccountUseCase(authRepository)
-    private val isAuthedUseCase: IsAuthedUseCase = IsAuthedUseCase(authRepository)
-    private val logoutUseCase: LogoutUseCase = LogoutUseCase(authRepository)
-
+class AuthorizationViewModel @Inject constructor(
+    private val createAccountUseCase: CreateAccountUseCase,
+    private val isAuthedUseCase: IsAuthedUseCase
+): BaseViewModel<AuthorizationState>() {
     override fun createInitialState(): AuthorizationState = AuthorizationState.SignUp
 
     init {

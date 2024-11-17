@@ -2,8 +2,9 @@ package ru.elkael.momento
 
 import ru.elkael.ui.navigations.Screen
 import ru.elkael.ui.BaseViewModel
+import javax.inject.Inject
 
-class MainViewModel: BaseViewModel<MainViewModelState>() {
+class MainViewModel @Inject constructor(): BaseViewModel<MainViewModelState>() {
     override fun createInitialState(): MainViewModelState = MainViewModelState.Initial
 
     fun onNavigateTo(screen: Screen) {
