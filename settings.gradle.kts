@@ -21,4 +21,9 @@ dependencyResolutionManagement {
 
 rootProject.name = "Momento"
 include(":app")
- 
+include(":ui")
+include(":resources")
+include(":utils")
+include(":auth_domain")
+include(":firebase_auth_data")
+include(":feature_authorization")
