@@ -36,6 +36,17 @@ class FirebaseAuthRepository @Inject constructor(): AuthRepository {
         return AuthStatus.Success
     }
 
+    override suspend fun login(email: String, password: String): AuthStatus {
+        return try {
+            auth.signInWithEmailAndPassword(email, password).await()
+            return AuthStatus.Success
+        } catch (e: FirebaseNetworkException) {
+            AuthStatus.NetworkException
+        } catch (e: Exception) {
+            AuthStatus.UnknownException
+        }
+    }
+
     override fun logout() = auth.signOut()
 
     override fun isAuthed(): Boolean = auth.currentUser != null
